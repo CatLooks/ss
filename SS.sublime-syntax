@@ -1,0 +1,42 @@
+%YAML 1.2
+file_extensions:
+  - ss
+scope: source.ss
+contexts:
+  main:
+    - match: '='
+      scope: punctuation.definition.comment.ss
+      push: line_comment
+
+    - match: 'lab'
+      scope: punctuation.definition.string.begin.txt
+      push: label
+
+    - match: '\b(0i)?[0-9]+\b'
+      scope: constant.numeric.ss
+
+    - match: '\b0x[0-9abcdefABCDEF]+\b'
+      scope: constant.numeric.ss
+
+    - match: '\b0o[0-7]+\b'
+      scope: constant.numeric.ss
+
+    - match: '\b0b[01]+\b'
+      scope: constant.numeric.ss
+
+    - match: '\b(end|set|add|sub|and|orb|xor|mov|pop|rec|res|inc|dec|out|int|str|
+                |inp|rng|lab|jmp|equ|neq|gtr|lss|geq|leq|jsr|rts|rol|ror|dbg)\b'
+      scope: keyword.control.ss
+
+    - match: '(\\n|\\r|\\s|\\t)'
+      scope: constant.character.escape.ss
+
+  line_comment:
+    - meta_scope: comment.line.ss
+    - match: $
+      pop: true
+
+  label:
+    - meta_scope: string.quoted.double.txt
+    - match: $
+      pop: true
