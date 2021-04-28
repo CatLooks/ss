@@ -42,6 +42,9 @@ arg_check = {
 	"and": 1,
 	"orb": 1,
 	"xor": 1,
+	"mul": 1,
+	"div": 1,
+	"mod": 1,
 	"mov": 0,
 	"pop": 0,
 	"rec": 0,
@@ -164,6 +167,16 @@ class Run:
 				cls.reg |= arg
 			elif inst == "xor":
 				cls.reg ^= arg
+			elif inst == "mul":
+				cls.reg = (cls.reg * arg) % 256
+			elif inst == "div":
+				if arg == 0:
+					cls.error("division by zero")
+				cls.reg = cls.reg // arg
+			elif inst == "mod":
+				if arg == 0:
+					cls.error("division by zero")
+				cls.reg = cls.reg % arg
 			elif inst == "mov":
 				cls.push(cls.reg)
 			elif inst == "pop":
