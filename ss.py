@@ -53,7 +53,6 @@ arg_check = {
 	"str": 2,
 	"inp": 0,
 	"rng": 0,
-	"dat": 0,
 	"lab": 2,
 	"jmp": 2,
 	"equ": 2,
