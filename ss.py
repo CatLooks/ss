@@ -65,8 +65,8 @@ arg_check = {
 	"jsr": 2,
 	"rts": 0,
 	"rol": 0,
-	"ror": 0,
-	"dbg": 0
+	"ror": 0
+	#"dbg": 0
 }
 
 class Run:
@@ -251,13 +251,13 @@ class Run:
 					cls.index = cls.stack.pop()
 				except:
 					pass
-			else:
+			"""else:
 				print("Reg:", cls.reg)
 				print("Buf:", cls.buf)
 				for i in range(16):
 					for j in range(16):
 						print("%02x" % cls.stream[i * 16 + j], end=" ")
-					print()
+					print()"""
 
 			cls.index += 1
 
